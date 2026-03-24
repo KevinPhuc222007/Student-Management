@@ -1,1 +1,12 @@
-
+void SystemManager::deleteStudent() {
+    string id;
+    cout << "Enter ID to delete: "; cin >> id;
+    
+    int index = searchGeneric(students, [&](shared_ptr<Student> s) { return s->getId() == id; });
+    if (index != -1) {
+        students.erase(students.begin() + index);
+        cout << "Student deleted successfully!\n";
+    } else {
+        cout << "Student not found!\n";
+    }
+}
